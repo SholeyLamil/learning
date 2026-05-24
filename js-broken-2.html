@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS Broken 2 — Render list</title>
+    <style>
+      body { font-family: sans-serif; max-width: 700px; margin: 40px auto; padding: 20px; }
+      .car { padding: 16px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 12px; }
+      .car h3 { margin: 0 0 4px; }
+      .car p { margin: 0; color: #666; }
+    </style>
+  </head>
+  <body>
+
+    <h1>Available cars</h1>
+    <div id="cars-list"></div>
+
+    <script>
+      const cars = [
+        { brand: "Toyota", model: "Camry", year: 2020, price: 4500000 },
+        { brand: "Honda", model: "Accord", year: 2018, price: 3200000 },
+        { brand: "Lexus", model: "RX 350", year: 2019, price: 8500000 }
+      ];
+
+      function formatPrice(amount) {
+        return "₦" + amount.toLocaleString();
+      }
+
+      const carsList = document.querySelector("#cars-list");
+
+      
+      let html = "";
+      for (const car of cars) {
+        html = html + "<div>" + car.brand + " " + car.model + " " + car.year + " costs " + formatPrice(car.price) + "</div>";
+      }
+      carsList.innerHTML = html;
+    </script>
+
+  </body>
+</html>

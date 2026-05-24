@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS Broken 3 — Filter</title>
+    <style>
+      body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; }
+      .filters { display: flex; gap: 8px; margin-bottom: 20px; }
+      .filters button { padding: 8px 16px; cursor: pointer; }
+      .car { padding: 16px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 12px; }
+      .car h3 { margin: 0 0 4px; }
+      .car p { margin: 0; color: #666; }
+    </style>
+  </head>
+  <body>
+
+    <h1>Browse cars</h1>
+
+    <div class="filters">
+      <button id="show-all">All</button>
+      <button id="show-toyota">Toyota only</button>
+      <button id="show-cheap">Under ₦4,000,000</button>
+    </div>
+
+    <div id="cars-list"></div>
+
+    <script>
+      const cars = [
+        { brand: "Toyota", model: "Camry", price: 4500000 },
+        { brand: "Honda", model: "Accord", price: 3200000 },
+        { brand: "Toyota", model: "Corolla", price: 2800000 },
+        { brand: "Lexus", model: "RX 350", price: 8500000 }
+      ];
+
+      const carsList = document.querySelector("#cars-list");
+
+      function renderCars(list) {
+        let html = "";
+        for (const car of list) {
+          html = html + "<div class='car'><h3>" + car.brand + " " + car.model + "</h3><p>₦" + car.price.toLocaleString() + "</p></div>";
+        }
+        carsList.innerHTML = html;
+      }
+
+      renderCars(cars);
+
+      const showAll = document.querySelector("#show-all");
+      const showToyota = document.querySelector("#show-toyota");
+      const showCheap = document.querySelector("#show-cheap");
+
+      showAll.addEventListener("click", () => {
+        renderCars(cars);
+      });
+
+      showToyota.addEventListener("click", () => {
+        const toyotas = cars.filter(car => car.brand === "Toyota");
+        renderCars(toyotas);
+      });
+
+      showCheap.addEventListener("click", () => {
+        const cheap = cars.filter(car => car.price < 4000000);
+        renderCars(cheap);
+      });
+    </script>
+
+  </body>
+</html>
