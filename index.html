@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning HTML, CSS, JS</title>
+    <style>
+      :root {
+        --brand: #7c3aed;
+        --templates: #2563eb;
+        --js: #f59e0b;
+        --debug: #ef4444;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --bg: #ffffff;
+        --bg-soft: #f8fafc;
+        --border: #e2e8f0;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text);
+        line-height: 1.6;
+        background:
+          radial-gradient(800px 400px at 0% 0%, #ede9fe 0%, transparent 60%),
+          radial-gradient(700px 400px at 100% 10%, #dbeafe 0%, transparent 60%),
+          var(--bg);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 80px 24px;
+      }
+
+      h1 {
+        font-size: 44px;
+        margin: 0 0 8px;
+        letter-spacing: -0.02em;
+        background: linear-gradient(90deg, var(--brand), var(--templates));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+      }
+
+      .subtitle {
+        color: var(--text-muted);
+        font-size: 18px;
+        margin: 0 0 56px;
+      }
+
+      h2 {
+        font-size: 13px;
+        margin: 40px 0 16px;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      h2::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--accent, var(--text-muted));
+      }
+
+      .list { display: flex; flex-direction: column; gap: 10px; }
+
+      .item {
+        display: block;
+        padding: 18px 20px;
+        background-color: var(--bg);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent, var(--border));
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--text);
+        transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+      }
+
+      .item:hover {
+        transform: translateX(2px);
+        border-color: var(--accent, var(--brand));
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+      }
+
+      .item-title { font-weight: 600; margin: 0 0 2px; }
+      .item-desc { font-size: 14px; color: var(--text-muted); margin: 0; }
+
+      .section-templates { --accent: var(--templates); }
+      .section-js       { --accent: var(--js); }
+      .section-debug    { --accent: var(--debug); }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Learning HTML, CSS, JS</h1>
+      <p class="subtitle">Templates, exercises, and JavaScript experiments — built and broken in public.</p>
+
+      <section class="section-templates">
+        <h2>Templates</h2>
+        <div class="list">
+          <a class="item" href="full-template.html">
+            <p class="item-title">Pulse — SaaS landing page</p>
+            <p class="item-desc">Full marketing site with nav, hero, pricing, testimonial, FAQ, footer.</p>
+          </a>
+          <a class="item" href="template.html">
+            <p class="item-title">Pulse — short landing page</p>
+            <p class="item-desc">Smaller version: nav, hero, features, footer.</p>
+          </a>
+          <a class="item" href="landing.html">
+            <p class="item-title">First landing page</p>
+            <p class="item-desc">From-scratch layout exercise.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section-js">
+        <h2>JavaScript</h2>
+        <div class="list">
+          <a class="item" href="JS1.html">
+            <p class="item-title">JS 1 — variables, functions, arrays, DOM, events</p>
+            <p class="item-desc">Renders a car list and tracks clicks.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section-debug">
+        <h2>Debugging exercises</h2>
+        <div class="list">
+          <a class="item" href="broken.html">
+            <p class="item-title">Broken page 1</p>
+            <p class="item-desc">Coffee shop site — 10 bugs fixed.</p>
+          </a>
+          <a class="item" href="broken2.html">
+            <p class="item-title">Broken page 2</p>
+            <p class="item-desc">Stationery site — 10 sneakier bugs fixed.</p>
+          </a>
+          <a class="item" href="lesson1.html">
+            <p class="item-title">Lesson 1</p>
+            <p class="item-desc">First HTML file ever.</p>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </body>
+</html>
