@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS 1</title>
+  </head>
+  <body>
+
+    <h1>Learning JS</h1>
+
+    <div id="cars-list"></div>
+
+
+    <p> Cars viewed: <span id="count">0</span></p>
+    <button id="view-btn">I viewed a car</button>
+
+    <script>
+      const name = "Wiredtrovert";
+      let count = 0;
+
+      console.log("Page loaded");
+      console.log(name);
+      console.log("Count: " + count); 
+      
+      function priceFormat(amount){
+        return "₦" + amount.toLocaleString();
+      }
+
+        console.log(priceFormat(1666890));
+        console.log(priceFormat(4000000));
+
+
+      const cars = [
+            { make: "Toyota", model: "Camry", year: 2020, price: 4500000 },
+            { make: "Honda", model: "Accord", year: 2015, price: 2000000 },
+            { make: "Lexus", model: "RX", year: 2020, price: 6000000 }
+        ];
+
+      for (const car of cars) {
+        console.log(car.make + " " + car.model + " costs " + priceFormat(car.price));
+      }
+
+      // Render cars into the page
+      const carList = document.querySelector("#cars-list");
+      let html = "";
+      for (const car of cars) {
+        html = html + "<div>" + car.make + " " + car.model + " costs " + priceFormat(car.price) + "</div>";
+      }
+      carList.innerHTML = html;
+
+      const viewBtn = document.querySelector("#view-btn");
+      const countDisplay = document.querySelector("#count");
+      let viewCount = 0; 
+
+      viewBtn.addEventListener("click",function(){
+        viewCount = viewCount +1;
+        countDisplay.textContent = viewCount;
+      });
+
+    </script>
+
+  </body>
+</html>

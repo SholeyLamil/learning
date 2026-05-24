@@ -1,0 +1,22 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor stuff
+.vscode/
+.idea/
+.continue/
+*.swp
+*.swo
+
+# Node (in case we add JS tools later)
+node_modules/
+package-lock.json
+
+# Logs
+*.log
+
+# Environment files (never commit secrets)
+.env
+.env.local

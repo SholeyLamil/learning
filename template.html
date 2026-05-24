@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulse — Realtime team chat that doesn't burn out</title>
+    <style>
+      :root {
+        --brand: #7c3aed;
+        --brand-dark: #6d28d9;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --bg: #ffffff;
+        --bg-soft: #f8fafc;
+        --border: #e2e8f0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text);
+        background-color: var(--bg);
+        line-height: 1.5;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Nav */
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-logo {
+        font-weight: 700;
+        font-size: 20px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 15px;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 10px 18px;
+        background-color: var(--brand);
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 15px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background-color: var(--brand-dark);
+      }
+
+      /* Hero */
+      .hero {
+        padding: 100px 0 80px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 56px;
+        line-height: 1.1;
+        margin: 0 0 20px;
+        letter-spacing: -0.02em;
+      }
+
+      .hero p {
+        font-size: 20px;
+        color: var(--text-muted);
+        max-width: 600px;
+        margin: 0 auto 32px;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--text);
+        border: 1px solid var(--border);
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--bg-soft);
+      }
+
+      /* Features */
+      .features {
+        padding: 80px 0;
+        background-color: var(--bg-soft);
+      }
+
+      .features h2 {
+        font-size: 36px;
+        text-align: center;
+        margin: 0 0 12px;
+      }
+
+      .features-subtitle {
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 18px;
+        margin: 0 0 60px;
+      }
+
+      .feature-grid {
+        display: flex;
+        gap: 24px;
+      }
+
+      .feature {
+        flex: 1;
+        padding: 32px;
+        background-color: var(--bg);
+        border-radius: 12px;
+        border: 1px solid var(--border);
+      }
+
+      .feature h3 {
+        margin: 0 0 12px;
+        font-size: 20px;
+      }
+
+      .feature p {
+        margin: 0;
+        color: var(--text-muted);
+      }
+
+      /* Footer */
+      footer {
+        padding: 40px 0;
+        border-top: 1px solid var(--border);
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-logo">Pulse</div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#docs">Docs</a>
+          <a href="#login" class="btn">Sign in</a>
+        </div>
+      </nav>
+    </div>
+
+    <section class="hero">
+      <div class="container">
+        <h1>Realtime team chat that doesn't burn out.</h1>
+        <p>Channels, threads, and AI summaries. Built for teams who ship.</p>
+        <div class="hero-actions">
+          <a href="#start" class="btn">Start free trial</a>
+          <a href="#demo" class="btn btn-secondary">Watch demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="container">
+        <h2>Built for focus</h2>
+        <p class="features-subtitle">Three principles guide everything we build.</p>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <h3>Threaded by default</h3>
+            <p>Every reply nests. No more 200-message chats where context dies after lunch.</p>
+          </div>
+          <div class="feature">
+            <h3>AI-summarized</h3>
+            <p>Catch up on yesterday's threads in 30 seconds. Pulse writes the recap.</p>
+          </div>
+          <div class="feature">
+            <h3>Offline-first</h3>
+            <p>Write in tunnels, planes, anywhere. Syncs when you reconnect.</p>
+          </div>
+          <div class="feature">
+            <h3>Search that works</h3>
+            <p>Find anything across every channel — even old DMs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        &copy; 2026 Pulse Labs · <a href="#privacy" style="color: inherit;">Privacy</a> · <a href="#terms" style="color: inherit;">Terms</a>
+      </div>
+    </footer>
+
+  </body>
+</html>

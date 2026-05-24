@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulse — Analytics for product teams</title>
+    <style>
+      :root {
+        --brand: #16a34a;
+        --brand-dark: #15803d;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --bg: #ffffff;
+        --bg-soft: #f8fafc;
+        --bg-dark: #0f172a;
+        --border: #e2e8f0;
+        --accent: #fbbf24;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text);
+        background-color: var(--bg);
+        line-height: 1.5;
+      }
+
+      a { color: inherit; }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Nav */
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .nav-logo {
+        font-weight: 700;
+        font-size: 20px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 15px;
+      }
+
+      .nav-links a:hover { color: var(--text); }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 12px 22px;
+        background-color: var(--brand);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 15px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover { background-color: var(--brand-dark); }
+
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--text);
+        border: 1px solid var(--border);
+      }
+
+      .btn-secondary:hover { background-color: var(--bg-soft); }
+
+      .btn-large {
+        padding: 16px 32px;
+        font-size: 16px;
+      }
+
+      /* Hero */
+      .hero {
+        padding: 80px 0 100px;
+        text-align: center;
+      }
+
+      .hero-eyebrow {
+        display: inline-block;
+        padding: 6px 14px;
+        background-color: var(--bg-soft);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: 24px;
+      }
+
+      .hero h1 {
+        font-size: 64px;
+        line-height: 1.05;
+        margin: 0 0 20px;
+        letter-spacing: -0.03em;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero p {
+        font-size: 20px;
+        color: var(--text-muted);
+        max-width: 600px;
+        margin: 0 auto 36px;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+      }
+
+      /* Logos strip */
+      .logos {
+        padding: 40px 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .logos-label {
+        text-align: center;
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: 24px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .logos-row {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 32px;
+        color: var(--text-muted);
+        font-weight: 600;
+        font-size: 18px;
+      }
+
+      /* Section base */
+      .section {
+        padding: 100px 0;
+      }
+
+      .section-soft { background-color: var(--bg-soft); }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-header h2 {
+        font-size: 40px;
+        margin: 0 0 12px;
+        letter-spacing: -0.02em;
+      }
+
+      .section-header p {
+        font-size: 18px;
+        color: var(--text-muted);
+        margin: 0;
+      }
+
+      /* Features */
+      .feature-grid {
+        display: flex;
+        gap: 24px;
+      }
+
+      .feature {
+        flex: 1;
+        padding: 32px;
+        background-color: var(--bg);
+        border-radius: 12px;
+        border: 1px solid var(--border);
+      }
+
+      .feature-icon {
+        width: 40px;
+        height: 40px;
+        background-color: var(--brand);
+        border-radius: 8px;
+        margin-bottom: 16px;
+      }
+
+      .feature h3 {
+        margin: 0 0 12px;
+        font-size: 20px;
+      }
+
+      .feature p {
+        margin: 0;
+        color: var(--text-muted);
+      }
+
+      /* How it works */
+      .steps {
+        display: flex;
+        gap: 48px;
+      }
+
+      .step {
+        flex: 1;
+      }
+
+      .step-number {
+        display: inline-block;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        text-align: center;
+        background-color: var(--brand);
+        color: white;
+        border-radius: 50%;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .step h3 {
+        margin: 0 0 8px;
+        font-size: 20px;
+      }
+
+      .step p {
+        margin: 0;
+        color: var(--text-muted);
+      }
+
+      /* Testimonial */
+      .testimonial {
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .testimonial blockquote {
+        font-size: 28px;
+        line-height: 1.3;
+        margin: 0 0 24px;
+        letter-spacing: -0.01em;
+      }
+
+      .testimonial-author {
+        color: var(--text-muted);
+        font-size: 15px;
+      }
+
+      .testimonial-author strong { color: var(--text); }
+
+      /* Pricing */
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 24px;
+      }
+
+      .price-card {
+        padding: 32px;
+        background-color: var(--bg);
+        border-radius: 12px;
+        border: 1px solid var(--border);
+      }
+
+      .price-card.featured {
+        border-color: var(--brand);
+        border-width: 2px;
+        position: relative;
+      }
+
+      .price-card-badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--brand);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .price-card h3 {
+        margin: 0 0 8px;
+        font-size: 18px;
+        color: var(--text-muted);
+      }
+
+      .price-amount {
+        font-size: 44px;
+        font-weight: 700;
+        margin: 0 0 4px;
+        letter-spacing: -0.02em;
+      }
+
+      .price-amount span {
+        font-size: 16px;
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+
+      .price-description {
+        color: var(--text-muted);
+        margin: 0 0 24px;
+        font-size: 15px;
+      }
+
+      .price-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 32px;
+      }
+
+      .price-features li {
+        padding: 8px 0;
+        color: var(--text);
+        font-size: 15px;
+      }
+
+      .price-card .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      /* FAQ */
+      .faq-list {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        padding: 24px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .faq-item h3 {
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
+
+      .faq-item p {
+        margin: 0;
+        color: var(--text-muted);
+      }
+
+      /* Final CTA */
+      .cta {
+        background-color: var(--bg-dark);
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+      }
+
+      .cta h2 {
+        font-size: 44px;
+        margin: 0 0 16px;
+        letter-spacing: -0.02em;
+      }
+
+      .cta p {
+        font-size: 18px;
+        color: #94a3b8;
+        margin: 0 0 32px;
+      }
+
+      /* Footer */
+      footer {
+        padding: 60px 0 40px;
+        background-color: var(--bg-soft);
+        border-top: 1px solid var(--border);
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 48px;
+        margin-bottom: 48px;
+      }
+
+      .footer-brand {
+        font-weight: 700;
+        font-size: 20px;
+        margin-bottom: 12px;
+      }
+
+      .footer-tagline {
+        color: var(--text-muted);
+        font-size: 15px;
+        margin: 0;
+      }
+
+      .footer-col h4 {
+        font-size: 14px;
+        margin: 0 0 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-muted);
+      }
+
+      .footer-col ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-col li {
+        padding: 6px 0;
+      }
+
+      .footer-col a {
+        color: var(--text);
+        text-decoration: none;
+        font-size: 15px;
+      }
+
+      .footer-col a:hover { color: var(--brand); }
+
+      .footer-bottom {
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-logo">Pulse</div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#docs">Docs</a>
+          <a href="#customers">Customers</a>
+          <a href="#blog">Blog</a>
+          <a href="#login" class="btn">Sign in</a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <span class="hero-eyebrow">v3.0 — now with cohort analysis</span>
+        <h1>The product analytics tool teams actually use.</h1>
+        <p>Track every meaningful event without writing a single SQL query. Set up in minutes, scale to billions of events.</p>
+        <div class="hero-actions">
+          <a href="#start" class="btn btn-large">Start free</a>
+          <a href="#demo" class="btn btn-secondary btn-large">Book a demo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logos -->
+    <section class="logos">
+      <div class="container">
+        <p class="logos-label">Trusted by teams at</p>
+        <div class="logos-row">
+          <span>Acme</span>
+          <span>Vortex</span>
+          <span>Northwind</span>
+          <span>Helix</span>
+          <span>Stratus</span>
+          <span>Pinwheel</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <h2>Everything you need. Nothing you don't.</h2>
+          <p>Three pillars. No bloat.</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="feature-icon"></div>
+            <h3>Auto-instrumentation</h3>
+            <p>Drop the SDK in. Pulse captures clicks, pageviews, and form events automatically.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon"></div>
+            <h3>Cohort analysis</h3>
+            <p>Segment users by behavior, not just demographics. Find your power users in seconds.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon"></div>
+            <h3>Privacy-first</h3>
+            <p>GDPR-ready, EU-hosted, no third-party trackers. Your users' data stays yours.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section section-soft">
+      <div class="container">
+        <div class="section-header">
+          <h2>From zero to insights in three steps</h2>
+          <p>Most teams are live in under 10 minutes.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Install the SDK</h3>
+            <p>One line of code in your app or website. We support every major framework.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Define your events</h3>
+            <p>Pick the moments that matter — signups, purchases, key actions. Or let auto-capture do it.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Build dashboards</h3>
+            <p>Drag, drop, share. No SQL, no Looker, no data team handoffs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="section">
+      <div class="container">
+        <div class="testimonial">
+          <blockquote>"Pulse replaced three tools and saved our team eight hours a week. We finally know what our users actually do."</blockquote>
+          <p class="testimonial-author"><strong>Adaora Okeke</strong> — Head of Product, Mara</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section section-soft" id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <h2>Simple pricing. No seat counts.</h2>
+          <p>Pay for events, not for the size of your team.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="price-card">
+            <h3>Hobby</h3>
+            <p class="price-amount">$0<span>/month</span></p>
+            <p class="price-description">For side projects and learning.</p>
+            <ul class="price-features">
+              <li>10k events / month</li>
+              <li>30-day retention</li>
+              <li>Community support</li>
+            </ul>
+            <a href="#start" class="btn btn-secondary">Get started</a>
+          </div>
+
+          <div class="price-card featured">
+            <span class="price-card-badge">Most popular</span>
+            <h3>Team</h3>
+            <p class="price-amount">$99<span>/month</span></p>
+            <p class="price-description">For growing product teams.</p>
+            <ul class="price-features">
+              <li>1M events / month</li>
+              <li>2-year retention</li>
+              <li>Unlimited dashboards</li>
+              <li>Email support</li>
+            </ul>
+            <a href="#start" class="btn">Start free trial</a>
+          </div>
+
+          <div class="price-card">
+            <h3>Business</h3>
+            <p class="price-amount">$299<span>/month</span></p>
+            <p class="price-description">For mid-sized teams with multiple products.</p>
+            <ul class="price-features">
+              <li>5M events / month</li>
+              <li>5-year retention</li>
+              <li>Unlimited team members</li>
+              <li>Priority support</li>
+            </ul>
+            <a href="#contact" class="btn">Start free trial</a>
+          </div>
+
+          <div class="price-card">
+            <h3>Scale</h3>
+            <p class="price-amount">Custom</p>
+            <p class="price-description">For larger organisations.</p>
+            <ul class="price-features">
+              <li>Unlimited events</li>
+              <li>Unlimited retention</li>
+              <li>SSO + audit logs</li>
+              <li>Dedicated support</li>
+            </ul>
+            <a href="#contact" class="btn btn-secondary">Contact sales</a>
+          </div>
+
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta">
+      <div class="container">
+        <h2>Ready to see what your users actually do?</h2>
+        <p>Free forever for hobby projects. No credit card needed.</p>
+        <a href="#start" class="btn btn-large">Start free</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand">Pulse</div>
+            <p class="footer-tagline">Analytics built for product teams, not analysts.</p>
+          </div>
+
+          <div class="footer-col">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#changelog">Changelog</a></li>
+              <li><a href="#status">Status</a></li>
+              <li><a href="#docs">Docs</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#customers">Customers</a></li>
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#careers">Careers</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#privacy">Privacy</a></li>
+              <li><a href="#terms">Terms</a></li>
+              <li><a href="#security">Security</a></li>
+              <li><a href="#gdpr">GDPR</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          &copy; 2026 Pulse Analytics. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

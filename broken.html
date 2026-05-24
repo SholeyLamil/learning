@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Brewline — Coffee</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: #1a1a1a;
+        color: white;
+        
+      }
+
+      .nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+      }
+
+      .nav a:hover {
+        color: orange;
+      }
+
+      .hero {
+        padding: 80px 40px;
+        text-align: center;
+        background-color: #f5e6d3;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+        margin-bottom: 16px;
+      }
+
+      .menu {
+        padding: 60px 40px;
+      }
+
+      .menu-grid {
+        display: flex;
+        gap: 24px;
+      }
+
+      .item {
+        padding: 24px;
+        background-color: #f5f5f5;
+        border-radius: 8px;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        background-color: #d97706;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+      }
+
+      .btn:hover {
+        background-color: #b45309;
+      }
+
+      .contact {
+        padding: 60px 40px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+
+    <header class="nav">
+      <h2>Brewline</h2>
+      <div>
+        <a href="menu">Menu</a>
+        <a href="contact">Contact</a>
+        <a href="about">About</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1>Coffee, done right.</h1>
+      <p>Roasted weekly. Served daily.</p>
+    </section>
+
+    <section class="menu">
+      <h2>Our menu</h2>
+
+      <div class="menu-grid">
+        <div class="item">
+          <h3>Espresso</h3>
+          <p>Single shot, double dark.</p>
+        </div>
+        <div class="item">
+          <h3>Flat white</h3>
+          <p>Velvet milk, two ristrettos.</p>
+        </div>
+        <div class="item">
+          <h3>Cold brew</h3>
+          <p>12-hour steep, served over ice.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Visit us</h2>
+      <img src="storefront.jpg" alt="Brewline storefront">
+      <p>Open daily 7am–6pm.</p>
+      <button class="btn">Get directions</button>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; 2026 Brewline</p> 
+    </footer>
+
+  </body>
+</html>
